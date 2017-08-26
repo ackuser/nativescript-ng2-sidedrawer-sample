@@ -32,15 +32,6 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
    */
   drawerTransition: any;
 
-  /**
-   * Navigation Menu Items
-   */
-  navMenu: any[] = [
-    { name: 'Home', commands: ['/'] },
-    { name: 'About', commands: ['/about'] },
-    { name: 'Contact', commands: ['/contact'] }
-  ];
-
   private drawer: SideDrawerType;
 
   constructor(
@@ -50,7 +41,6 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
     private ngZone: NgZone
   ) {
     this.setActionBarIcon(this.page);
-    this.setDrawerTransition();
   }
 
   ngAfterViewInit() {
@@ -70,34 +60,6 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
    */
   navigateTo(routeCommands: any[]) {
     this.drawer.closeDrawer();
-    let currentUrl = this.routerExtensions.router.routerState.snapshot.url;
-    let newUrlTree = this.routerExtensions.router.createUrlTree(routeCommands);
-    let newUrl = this.routerExtensions.router.serializeUrl(newUrlTree);
-    if (currentUrl !== newUrl) {
-      this.isContentVisible = false;
-
-      this.drawer.on('drawerClosed', () => {
-        this.ngZone.run(() => {
-          this.routerExtensions.navigate(routeCommands,
-            {
-              clearHistory: true,
-              animated: false
-            });
-          this.isContentVisible = true;
-          this.drawer.off('drawerClosed');
-        });
-      });
-    }
-  }
-
-  private setDrawerTransition() {
-    if (isAndroid) {
-      this.drawerTransition = new SlideInOnTopTransition();
-    }
-
-    if (isIOS) {
-      this.drawerTransition = new PushTransition();
-    }
   }
 
   private setActionBarIcon(page: Page) {
