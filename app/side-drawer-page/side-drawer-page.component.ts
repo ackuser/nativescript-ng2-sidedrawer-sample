@@ -16,8 +16,8 @@ import {
 
 @Component({
   selector: 'side-drawer-page',
-  templateUrl: './shared/side-drawer-page/side-drawer-page.component.html',
-  styleUrls: ['./shared/side-drawer-page/side-drawer-page.component.css']
+  templateUrl: './side-drawer-page/side-drawer-page.component.html',
+  styleUrls: ['./side-drawer-page/side-drawer-page.component.css']
 })
 export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
   @ViewChild(RadSideDrawerComponent) drawerComponent: RadSideDrawerComponent;
@@ -36,9 +36,10 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
    * Navigation Menu Items
    */
   navMenu: any[] = [
-    { name: 'Home', commands: ['/'] },
-    { name: 'About', commands: ['/about'] },
-    { name: 'Contact', commands: ['/contact'] }
+    { name: 'Home', commands: ['/'] }
+    // ,
+    // { name: 'About', commands: ['/about'] },
+    // { name: 'Contact', commands: ['/contact'] }
   ];
 
   private drawer: SideDrawerType;
@@ -70,24 +71,24 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
    */
   navigateTo(routeCommands: any[]) {
     this.drawer.closeDrawer();
-    let currentUrl = this.routerExtensions.router.routerState.snapshot.url;
-    let newUrlTree = this.routerExtensions.router.createUrlTree(routeCommands);
-    let newUrl = this.routerExtensions.router.serializeUrl(newUrlTree);
-    if (currentUrl !== newUrl) {
-      this.isContentVisible = false;
-
-      this.drawer.on('drawerClosed', () => {
-        this.ngZone.run(() => {
-          this.routerExtensions.navigate(routeCommands,
-            {
-              clearHistory: true,
-              animated: false
-            });
-          this.isContentVisible = true;
-          this.drawer.off('drawerClosed');
-        });
-      });
-    }
+    // let currentUrl = this.routerExtensions.router.routerState.snapshot.url;
+    // let newUrlTree = this.routerExtensions.router.createUrlTree(routeCommands);
+    // let newUrl = this.routerExtensions.router.serializeUrl(newUrlTree);
+    // if (currentUrl !== newUrl) {
+    //   this.isContentVisible = false;
+    //
+    //   this.drawer.on('drawerClosed', () => {
+    //     this.ngZone.run(() => {
+    //       this.routerExtensions.navigate(routeCommands,
+    //         {
+    //           clearHistory: true,
+    //           animated: false
+    //         });
+    //       this.isContentVisible = true;
+    //       this.drawer.off('drawerClosed');
+    //     });
+    //   });
+    // }
   }
 
   private setDrawerTransition() {
@@ -112,7 +113,7 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
 
   private getNavigationButton() {
     let navActionItem = new ActionItem();
-    navActionItem.icon = 'res://ic_menu_black';
+    navActionItem.icon = 'res://logo';
     if (navActionItem.ios) {
       navActionItem.ios.position = 'left';
     }
