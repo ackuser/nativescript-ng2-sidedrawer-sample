@@ -45,8 +45,8 @@ export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
   private drawer: SideDrawerType;
 
   constructor(
-    private routerExtensions: RouterExtensions,
-    private activatedRoute: ActivatedRoute,
+    // private routerExtensions: RouterExtensions,
+    // private activatedRoute: ActivatedRoute,
     private page: Page,
     private ngZone: NgZone
   ) {
