@@ -16,8 +16,8 @@ import {
 
 @Component({
   selector: 'side-drawer-page',
-  templateUrl: 'modules/shared/side-drawer-page/side-drawer-page.component.html',
-  styleUrls: ['modules/shared/side-drawer-page/side-drawer-page.component.css']
+  templateUrl: './shared/side-drawer-page/side-drawer-page.component.html',
+  styleUrls: ['./shared/side-drawer-page/side-drawer-page.component.css']
 })
 export class SideDrawerPageComponent implements AfterViewInit, OnDestroy {
   @ViewChild(RadSideDrawerComponent) drawerComponent: RadSideDrawerComponent;

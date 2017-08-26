@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'home',
-  templateUrl: 'modules/home/home.component.html',
+  templateUrl: './home/home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
